@@ -1,0 +1,7 @@
+package animal;
+
+public enum NaturalFeature {
+  DESSERT, FALLENLOG, FLOWINGWATER, 
+  GRASS, LILYPOOL, POND, ROCKS,
+  SALTWATER, SANDYBEACH, TREEBRANCHES;
+}
