@@ -3,6 +3,9 @@ package animal;
 import animal.Endangerment;
 import animal.NaturalFeature;
 import habitat.Habitat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 //Should consist of the methods for animal
 //Need to have these methods in here to access them. 
@@ -16,7 +19,7 @@ public interface Animal {
 //  
 //  public int getTemperatureHigh();
 //  
-//  public NaturalFeature getNaturalFeature();
+  public NaturalFeature getNaturalFeature();
 //  
 //  public boolean getPoisonous();
 //  
@@ -24,8 +27,10 @@ public interface Animal {
 //  
 //  public boolean getCanShareSpace();
 //  
-//  public Size getSize();
+  public int getSizeMeters();
 //  
-  public Habitat makePerfectHabitat(int size, String Location);
+  public Habitat makePerfectHabitat(int size, String location);
+  
+  public int habitAnimalFit(HashMap<String, Object> habInfo);
 
 }

@@ -10,15 +10,18 @@ public class HabitatClass implements Habitat {
   private int habitatSize;
   private int temperatureOfHabitat;
   private String location;
+  private boolean sharing;
   
   
   public HabitatClass(NaturalFeature naturalFeature, 
       int habitatSize, 
       int temperatureOfHabitat,
-      String location) {
+      String location,
+      boolean sharing) {
     this.habitatSize = habitatSize;
     this.temperatureOfHabitat = temperatureOfHabitat;
     this.location = location;
+    this.sharing = sharing;
     
     naturalFeatures.add(naturalFeature);
   }
@@ -31,6 +34,7 @@ public class HabitatClass implements Habitat {
     habInfo.put("Location", this.location);
     habInfo.put("HabitatSize", this.habitatSize);
     habInfo.put("Temperature", this.temperatureOfHabitat);
+    habInfo.put("Sharing", this.sharing);
     
     return habInfo;
   }
@@ -46,8 +50,7 @@ public class HabitatClass implements Habitat {
 
 //  @Override
 //  public int getHabitatSize() {
-//    // TODO Auto-generated method stub
-//    return habitatSize;
+//    return this.habitatSize;
 //  }
 //
 //  @Override
@@ -69,9 +72,9 @@ public class HabitatClass implements Habitat {
   //TODO: Some of these methods are really unnecessary
 
   @Override
-  public int subtractSizeForAnimal() {
-    // TODO Auto-generated method stub
-    return 0;
+  public void subtractSizeForAnimal(int animalSize) {
+    int habSize = this.habitatSize - animalSize;
+    this.habitatSize = habSize;
   }
 
   @Override
@@ -79,17 +82,27 @@ public class HabitatClass implements Habitat {
     // TODO Auto-generated method stub
     return 0;
   }
-
-  @Override
-  public NaturalFeature[] addNaturalFeature() {
-    // TODO Auto-generated method stub
-    return null;
-  }
+  
+//  @Override
+//  public void addNaturalFeature(NaturalFeature naturalfeature) {
+//    // TODO Auto-generated method stub
+//    this.naturalFeatures.add(naturalfeature);
+//  }
 
   @Override
   public NaturalFeature[] deleteNaturalFeature() {
     // TODO Auto-generated method stub
     return null;
+  }
+
+  @Override
+  public void addNaturalFeature(NaturalFeature naturalFeature) throws IllegalArgumentException {
+    if (this.naturalFeatures.size() >= 3) {
+      throw new IllegalStateException("Cannot Hace a Habitat with more than 3 features.");
+    }
+    
+    this.naturalFeatures.add(naturalFeature);
+  
   }
 
 

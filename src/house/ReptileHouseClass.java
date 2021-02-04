@@ -19,7 +19,9 @@ public class ReptileHouseClass implements ReptileHouse {
   private int habitatLimit;
   private List<Animal> animalList = new ArrayList<Animal>();
   private List<Habitat> habitatList = new ArrayList<Habitat>();
-  private HashMap<HabitatClass, Animal> animalsInHabitats;
+  private HashMap<Habitat, Animal> animalsInHabitats = new HashMap<Habitat, Animal>();
+
+
   
   
   public ReptileHouseClass(int habitatLimit) {
@@ -35,71 +37,119 @@ public class ReptileHouseClass implements ReptileHouse {
     //adds animal to list
     animalList.add(animal);
     //finds a habitat for the animal
-    this.findHabitat(animal);
+    this.habitatPlacement(animal);
     
   }
   
-  
-  private void findHabitat(Animal animal) {
-    //Go through current habitat list and see if features match
-    
-    System.out.println("Find a habitat for our lil guy");
-    
-    int size = habitatList.size();
-    
-    if (size > 0) {
-    
-      for (Habitat home : habitatList) {
-        HashMap<String, Object> habInfo = home.habitatInfo();
-        
-        Object naturalFeatures = habInfo.get("NaturalFeature");
-        
-        System.out.println("Printing Potential Home");
-        System.out.println(habInfo);
-        
-        //TODO: Finish this when we have some habitats made
-        
-        int temperature = (Integer) habInfo.get("Temperature");
-        
-        if (temperature > 0) {
-          System.out.println("Looks like we can access");
-        }
-        
-        //TODO: GIve this to animal class to see if these is a perfect fit
-        
-      }
-    
-    } else {
-      System.out.println("Time to make a new habitat");
-      
-      //TODO: Make this function dynamic
-      
-      System.out.println(animal.getClass().getName());
-      
-      String[] habitatNameArr = animal.getClass().getName().split("\\.", 2);
-      
-      String habitatName = habitatNameArr[1] + "Habitat";
-      
+  /**
+   * Creates a new habitat for animal.
+   *  
+   * @param animal
+   * @throws IllegalArgumentException
+   */
+  private void createNewHabitat(Animal animal) throws IllegalArgumentException {
 
-      Habitat createdHome = animal.makePerfectHabitat(100, habitatName);
-      
+    
+     
+    System.out.println("Time to make a new habitat");
+    
+
+    System.out.println(animal.getClass().getName());
+    
+    String[] habitatNameArr = animal.getClass().getName().split("\\.", 2);
+    
+    String habitatName = habitatNameArr[1] + "Habitat";
+    
+
+    Habitat createdHome = animal.makePerfectHabitat(100, habitatName);
+    
+   
+    System.out.println("Now Adding to Habitat List");
+    
+    int size = this.habitatList.size();
+    
+    System.out.println("Properly Found Size" + size);
+    
+    if (size < this.habitatLimit) {
+      System.out.println("passed habitat limit test");
+      this.habitatList.add(createdHome);
       System.out.println(createdHome);
-      System.out.println("Now Adding to Habitat List");
+      this.animalsInHabitats.put(createdHome, animal);
+      System.out.println("Successfully created home");
       
-      if (size < this.habitatLimit) {
-        habitatList.add(createdHome);
-      } else {
-        //TODO: Add invalid argument exception
-        
-        System.out.println("Sorry little buddy we must turn you away");
-        
-      }
+    } else {
+      throw new IllegalStateException("We have no room for this animal!");
     }
     
+  }
+  
+  private void habitatPlacement(Animal animal) {
+    System.out.println("Find a habitat for our lil guy");
+    int size = this.habitatList.size();
+
+    if (size > 0) {
+      
+      Habitat habitatFit = this.findHabitat(animal);
+     
+      if (habitatFit == null) {
+        System.out.println("There were no habitat fits");
+        this.createNewHabitat(animal);
+      } else {
+        System.out.println(habitatFit);
+        this.animalsInHabitats.put(habitatFit, animal);
+        
+      }
+      
+     
+      
+    } else {
     
-    //if none match animal class should produce perfect habitat
-    //If not at limit of habitats created
     
+      this.createNewHabitat(animal);
+    
+      System.out.println("Out of the create habitat function");
+    
+    }
+  
+  }
+  
+  
+  private Habitat findHabitat(Animal animal) {
+    //Go through current habitat list and see if features match
+    
+    System.out.println("There are some availible habitats");
+    
+    for (Habitat home : this.habitatList) {
+      //Making sure the species can be mixed
+      String classAnimal = this.animalsInHabitats.get(home).getClass().getName();
+      int sizeMeters = animal.getSizeMeters();
+      
+      if (animal.getClass().getName() == classAnimal) {
+        // TODO: Need to check if animals line up   
+        int goodHabitat = animal.habitAnimalFit(home.habitatInfo());
+          
+        System.out.println(goodHabitat);
+          
+        if (goodHabitat == 0) {
+          //reduction of size from the animal
+          
+          home.subtractSizeForAnimal(sizeMeters);
+          return home;
+        } else if (goodHabitat == 1) {
+          //adds natural feature to habitat
+          home.addNaturalFeature(animal.getNaturalFeature());
+          //Reduces the size
+          home.subtractSizeForAnimal(sizeMeters);
+          
+          return home;
+        } else if (goodHabitat == 2) {
+          return null;
+        }
+        
+      }
+      
+    }
+    return null;
     
   }
   

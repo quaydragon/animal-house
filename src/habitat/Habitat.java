@@ -7,14 +7,16 @@ import java.util.List;
 
 public interface Habitat {
   
+  //TODO: Must designate if a species cannot share a space
+  
   
   //TODO: Add For Location
   
-  public int subtractSizeForAnimal();
+  public void subtractSizeForAnimal(int animalSize);
   
   public int changeTemperature();
   
-  public NaturalFeature[] addNaturalFeature();
+  public void addNaturalFeature(NaturalFeature naturalFeature);
   
   public NaturalFeature[] deleteNaturalFeature();
   
