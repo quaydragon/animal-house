@@ -2,9 +2,10 @@ package house;
 
 import animal.Animal;
 import animal.Reptile;
+import animal.Amphibian;
 import habitat.HabitatClass;
 import java.util.HashMap;
-import animal.Amphibian;
+
 
 public interface ReptileHouse {
   
@@ -14,7 +15,7 @@ public interface ReptileHouse {
   
   public HabitatClass[] removeFromHabitatList();
   
-  public Animal[] addAnimalList();
+  public void addAnimal(Animal animal);
   
   public Animal[] removeAnimalList();
   

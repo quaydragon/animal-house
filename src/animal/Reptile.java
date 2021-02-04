@@ -13,7 +13,8 @@ public class Reptile extends AbstractAnimal {
       NaturalFeature naturalFeature,
       boolean poisonous,
       Endangerment endangerment, 
-      boolean canShareSpace) {
+      boolean canShareSpace,
+      String species) {
     
     super(size,
          temperatureLow,
@@ -21,7 +22,8 @@ public class Reptile extends AbstractAnimal {
          naturalFeature,
          poisonous,
          endangerment,
-         canShareSpace);
+         canShareSpace,
+         species);
   }
   
 
