@@ -6,7 +6,7 @@ import animal.Endangerment;
 import animal.NaturalFeature;
 import animal.Reptile;
 import animal.Size;
-import house.ReptileHouse;
+import house.Conservatory;
 import house.ReptileHouseClass;
 
 public class Driver {
@@ -55,6 +55,8 @@ public class Driver {
     rh.printHabitatSigns();
     rh.checkForHabitat();
     rh.printNaturalFeatures();
+    
+    rh.printMap();
     
   } 
 

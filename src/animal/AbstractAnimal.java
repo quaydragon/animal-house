@@ -8,6 +8,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Represents the AbstractAnimal class.
+ * 
+ * @author quaydragon
+ *
+ */
 public class AbstractAnimal implements Animal {
   protected Size size;
   protected int temperatureLow;
@@ -20,6 +26,19 @@ public class AbstractAnimal implements Animal {
   protected int sizeMeters;
   protected String name;
   
+  /**
+   * Constructs an animal.
+   * 
+   * @param size this size of the animal
+   * @param temperatureLow the lowest temperature the animal can tolerate
+   * @param temperatureHigh the highest temperature the animal can tolerate
+   * @param naturalFeature the preferred natural feature of the animal
+   * @param poisonous whether the animal is poisonous
+   * @param endangerment the endangerment status of the animal
+   * @param canShareSpace whether the animal can share space
+   * @param species the species of the animal
+   * @param name the animal name
+   */
   public AbstractAnimal(Size size,
       int temperatureLow,
       int temperatureHigh,
@@ -43,42 +62,18 @@ public class AbstractAnimal implements Animal {
   }
   
 
-  //TODO: Delete your getters
-//  @Override
-//  public int getTemperatureLow() {
-//    return temperatureLow;
-//  }
-//  
-//  @Override
-//  public int getTemperatureHigh() {
-//    return temperatureHigh;
-//  }
-//  
+
   @Override
   public NaturalFeature getNaturalFeature() {
     return naturalFeature;
   }
-//  
-//  @Override
-//  public boolean getPoisonous() {
-//    return poisonous;
-//  }
-//  
-//  @Override
-//  public Endangerment getEndangerment() {
-//    return endangerment;
-//  }
-//  
-//  @Override
-//  public boolean getCanShareSpace() {
-//    return canShareSpace;
-//  }
-//
+
   @Override
   public int getSizeMeters() {
     int spaceNeeded = this.sizeNumber();
     return spaceNeeded;
   }
+  
 
   private int sizeNumber() {
     if (this.size == Size.SMALL) {
@@ -91,9 +86,10 @@ public class AbstractAnimal implements Animal {
    
     return 0;
   }
-  
+
   @Override
   public Habitat makePerfectHabitat(int size, String location) throws IllegalArgumentException {
+    // Extinct Animals cannot be added to a habitat
     if (this.endangerment == Endangerment.EXTINCT) {
       throw new IllegalStateException("Endangered Species cannot live in a habitat.");
     }
@@ -107,6 +103,7 @@ public class AbstractAnimal implements Animal {
 
   @Override
   public int habitAnimalFit(HashMap<String, Object> habInfo) throws IllegalArgumentException {
+    // Extinct Animals cannot be added to the habitat
     if (this.endangerment == Endangerment.EXTINCT) {
       throw new IllegalStateException("Endangered Species cannot live in a habitat.");
     }

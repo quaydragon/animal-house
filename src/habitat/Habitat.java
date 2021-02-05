@@ -1,34 +1,35 @@
 package habitat;
 
 import animal.NaturalFeature;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
+/**
+ * Specifies habitat interface.
+ * 
+ * @author quaydragon
+ *
+ */
 public interface Habitat {
   
-  //TODO: Must designate if a species cannot share a space
-  
-  
-  //TODO: Add For Location
-  
+  /**
+   * Takes in animal size and subtracts it from the habitat.
+   * 
+   * @param animalSize subtracts the meters required for an animal
+   */
   public void subtractSizeForAnimal(int animalSize);
   
-  public int changeTemperature();
-  
+  /** 
+   * Adds a natural feature to the habitat.
+   * 
+   * @param naturalFeature the natural feature to add to the habitat.
+   */
   public void addNaturalFeature(NaturalFeature naturalFeature);
-  
-  public NaturalFeature[] deleteNaturalFeature();
-  
-  
-  public List<NaturalFeature> getNaturalFeatures();
-  
-//  public int getHabitatSize();
-//  
-//  public int getTemperatureOfHabitat();
-//  
-//  public String getLocation();
-  
+ 
+  /**
+   * Returns information about the habitat. 
+   * 
+   * @return information about the habitat
+   */
   public HashMap<String, Object> habitatInfo();
   
 }
