@@ -25,7 +25,7 @@ public interface ReptileHouse {
   
   public void printNaturalFeatures();
   
-  public void printHabitatSign();
+  public void printHabitatSigns();
   
   public HashMap<HabitatClass, Animal> findHabitat();
   

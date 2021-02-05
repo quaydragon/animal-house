@@ -32,5 +32,7 @@ public interface Animal {
   public Habitat makePerfectHabitat(int size, String location);
   
   public int habitAnimalFit(HashMap<String, Object> habInfo);
+  
+  public HashMap<String, Object> animalInfo();
 
 }

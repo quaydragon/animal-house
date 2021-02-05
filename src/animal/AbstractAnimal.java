@@ -18,6 +18,7 @@ public class AbstractAnimal implements Animal {
   protected boolean canShareSpace;
   protected String species;
   protected int sizeMeters;
+  protected String name;
   
   public AbstractAnimal(Size size,
       int temperatureLow,
@@ -26,7 +27,8 @@ public class AbstractAnimal implements Animal {
       boolean poisonous,
       Endangerment endangerment, 
       boolean canShareSpace,
-      String species) {
+      String species,
+      String name) {
     this.size = size;
     this.temperatureLow = temperatureLow;
     this.temperatureHigh = temperatureHigh;
@@ -35,8 +37,9 @@ public class AbstractAnimal implements Animal {
     this.endangerment = endangerment;
     this.canShareSpace = canShareSpace;
     this.species = species;
+    this.name = name;
     
-    this.sizeMeters = this.getSizeMeters();
+
   }
   
 
@@ -73,20 +76,19 @@ public class AbstractAnimal implements Animal {
 //
   @Override
   public int getSizeMeters() {
-    return this.sizeMeters;
+    int spaceNeeded = this.sizeNumber();
+    return spaceNeeded;
   }
 
   private int sizeNumber() {
-    switch (this.size) {
-      case SMALL:
-        return 1;
-      case MEDIUM:
-        return 5;
-      case LARGE:
-        return 10;
-      default:
-        break;
+    if (this.size == Size.SMALL) {
+      return 1;
+    } else if (this.size == Size.MEDIUM) {
+      return 5;
+    } else if (this.size == Size.LARGE) {
+      return 10;
     }
+   
     return 0;
   }
   
@@ -96,7 +98,7 @@ public class AbstractAnimal implements Animal {
       throw new IllegalStateException("Endangered Species cannot live in a habitat.");
     }
     int temperature = (this.temperatureLow + this.temperatureHigh) / 2;
-    int sizeSubtracted = size - this.sizeMeters;
+    int sizeSubtracted = size - this.sizeNumber();
     HabitatClass habitat = new HabitatClass(
         this.naturalFeature, sizeSubtracted, temperature, location, this.canShareSpace);
     return habitat;
@@ -138,6 +140,18 @@ public class AbstractAnimal implements Animal {
     
     
     return 2;
+  }
+  
+  @Override
+  public HashMap<String, Object> animalInfo() {
+    HashMap<String, Object> animalInfo = new HashMap<String, Object>();
+    
+    animalInfo.put("Species", this.species);
+    animalInfo.put("Name", this.name);
+    animalInfo.put("Poisonous", this.poisonous);
+    animalInfo.put("Endangered", this.endangerment);
+    
+    return animalInfo;
   }
   
   

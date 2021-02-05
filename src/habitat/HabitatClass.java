@@ -36,6 +36,7 @@ public class HabitatClass implements Habitat {
     habInfo.put("Temperature", this.temperatureOfHabitat);
     habInfo.put("Sharing", this.sharing);
     
+    
     return habInfo;
   }
   

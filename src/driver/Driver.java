@@ -1,6 +1,7 @@
 package driver;
 
 
+import animal.Amphibian;
 import animal.Endangerment;
 import animal.NaturalFeature;
 import animal.Reptile;
@@ -19,7 +20,8 @@ public class Driver {
         false,
         Endangerment.FINE,
         true,
-        "lily lizard");
+        "lily lizard",
+        "Cynthia");
     
     Reptile komododragon = new Reptile(Size.SMALL,
         30,
@@ -28,7 +30,18 @@ public class Driver {
         true,
         Endangerment.FINE,
         true,
-        "Komodo Dragon");
+        "Komodo Dragon",
+        "Drago");
+    
+    Amphibian toady = new Amphibian(Size.SMALL,
+        75,
+        90,
+        NaturalFeature.FLOWINGWATER,
+        true,
+        Endangerment.FINE,
+        true,
+        "Bull Toad",
+        "Mr. Frowny");
     
     
     ReptileHouseClass rh = new ReptileHouseClass(3);
@@ -36,6 +49,12 @@ public class Driver {
     rh.addAnimal(lilyLizard);
     
     rh.addAnimal(komododragon);
+    rh.addAnimal(toady);
+    
+    rh.printSpecies();
+    rh.printHabitatSigns();
+    rh.checkForHabitat();
+    rh.printNaturalFeatures();
     
   } 
 

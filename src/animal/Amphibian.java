@@ -9,7 +9,8 @@ public class Amphibian extends AbstractAnimal {
       boolean poisonous,
       Endangerment endangerment, 
       boolean canShareSpace,
-      String species) {
+      String species,
+      String name) {
     
     super(size,
          temperatureLow,
@@ -18,6 +19,7 @@ public class Amphibian extends AbstractAnimal {
          poisonous,
          endangerment,
          canShareSpace,
-         species);
+         species,
+         name);
   }
 }
