@@ -1,0 +1,39 @@
+1. About/Overview. 
+
+THe RHouse java project builds a reptile house that holds different animals, specifically reptiles and amphibians.
+
+2. List of features. 
+    -Creating a conservatory that holds the habits, which hold the animals.
+    -Creates habitats tailored to the animals in the conservatory. 
+    -Creates animals that are either amphibians or reptiles.
+        These animals have the features: 
+        -Size
+        -Lowest Temperature they can live at.
+        -Highest temperature they can live at.
+        -Their natural feature preference: such as a log or sandy beach.
+        -Whether or not they are poisonous.
+        -Whether or not they are endangered. 
+
+3. How To Run. Instructions to run the program should include the following:
+
+4. How to run the jar file
+cd into the res/ directory in terminal and run:
+    java -jar house.jar
+
+5. Description of Example Runs. When providing example runs, describe what each example run does. For example:
+
+Run 1 -- Filename: rhouse.txt:
+  1. Runs Driver.java which outputs the example conservatory, with example animals.  
+  
+
+6. Changes:
+
+There were significant changes made to the UML design once I started building. I realized how many more functions the AbstractAnimal class should have.
+
+7. Assumptions:
+
+I assumed that we would be using the program to make a reptile house. However, names could be changed for this program to be used to make any type of animal house. 
+
+8. Limitations:
+    As of now you can only have an amphibian or reptile as a specified animal class. However, animal allows you to create any type of animal.
+    You cannot edit the habitats that the animals inhabit or expand the conservatory. This makes the program inflexible. 

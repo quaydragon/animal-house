@@ -1,0 +1,72 @@
+Creating the Reptile House
+Adding Lily Lizard
+Adding Komodo Dragon
+Adding Toady
+Komodo Dragon
+lily lizard
+Bull Toad
+Current Species being held:
+[Bull Toad, Komodo Dragon, lily lizard]
+
+
+HABITAT SIGN
+Location: Reptile Habitat
+
+
+SPECIES INFORMATION FOR HABITAT
+Species: Komodo Dragon
+Name: Drago
+Poisonous: true
+Endangered Category: Komodo Dragon
+
+
+SPECIES INFORMATION FOR HABITAT
+Species: lily lizard
+Name: Cynthia
+Poisonous: false
+Endangered Category: lily lizard
+
+
+
+
+
+HABITAT SIGN
+Location: Amphibian Habitat
+
+
+SPECIES INFORMATION FOR HABITAT
+Species: Bull Toad
+Name: Mr. Frowny
+Poisonous: true
+Endangered Category: Bull Toad
+
+
+
+
+
+NATURAL FEATURES OF HABITAT
+
+
+Natural Features: [LILYPOOL, FALLENLOG]
+Remaining Space: 18
+
+
+NATURAL FEATURES OF HABITAT
+
+
+Natural Features: [FLOWINGWATER]
+Remaining Space: 19
+Printing Conservatory Map
+
+
+Location: Reptile Habitat
+Natural Features: [LILYPOOL, FALLENLOG]
+Species of Animal: 
+Komodo Dragon
+lily lizard
+
+
+Location: Amphibian Habitat
+Natural Features: [FLOWINGWATER]
+Species of Animal: 
+Bull Toad

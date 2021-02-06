@@ -56,15 +56,17 @@ public class HabitatClass implements Habitat {
   }
 
   @Override
-  public void subtractSizeForAnimal(int animalSize) {
+  public int subtractSizeForAnimal(int animalSize) {
     // reduce the size of the habitat
     int habSize = this.habitatSize - animalSize;
     this.habitatSize = habSize;
+    return this.habitatSize;
   }
 
 
   @Override
-  public void addNaturalFeature(NaturalFeature naturalFeature) throws IllegalArgumentException {
+  public List<NaturalFeature> 
+      addNaturalFeature(NaturalFeature naturalFeature) throws IllegalArgumentException {
     
     // Cannot have more than 3 natural features
     if (this.naturalFeatures.size() >= 3) {
@@ -72,6 +74,8 @@ public class HabitatClass implements Habitat {
     }
     
     this.naturalFeatures.add(naturalFeature);
+    
+    return this.naturalFeatures;
   
   }
 

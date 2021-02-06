@@ -1,11 +1,7 @@
 package house;
 
 import animal.Animal;
-import animal.Reptile;
-import animal.Amphibian;
 import habitat.Habitat;
-import habitat.HabitatClass;
-import java.util.HashMap;
 import java.util.List;
 
 /**

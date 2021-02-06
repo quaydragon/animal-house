@@ -1,10 +1,7 @@
 package animal;
 
-import java.util.HashMap;
-
 import habitat.Habitat;
 import habitat.HabitatClass;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -80,18 +77,15 @@ public class AbstractAnimal implements Animal {
       return 1;
     } else if (this.size == Size.MEDIUM) {
       return 5;
-    } else if (this.size == Size.LARGE) {
-      return 10;
-    }
-   
-    return 0;
+    } 
+    return 10;
   }
 
   @Override
   public Habitat makePerfectHabitat(int size, String location) throws IllegalArgumentException {
     // Extinct Animals cannot be added to a habitat
     if (this.endangerment == Endangerment.EXTINCT) {
-      throw new IllegalStateException("Endangered Species cannot live in a habitat.");
+      throw new IllegalStateException("Extinct Species cannot live in a habitat.");
     }
     int temperature = (this.temperatureLow + this.temperatureHigh) / 2;
     int sizeSubtracted = size - this.sizeNumber();
@@ -107,8 +101,6 @@ public class AbstractAnimal implements Animal {
     if (this.endangerment == Endangerment.EXTINCT) {
       throw new IllegalStateException("Endangered Species cannot live in a habitat.");
     }
-    
-    System.out.println(habInfo);
     
     boolean sharing = (boolean) habInfo.get("Sharing");
     int habitatSize = (Integer) habInfo.get("HabitatSize");
